@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -14,5 +15,17 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append(\Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->render(function (Throwable $e, Request $request) {
+            if ($e instanceof \App\Exceptions\BaseException) {
+                return \App\Exceptions\ApiExceptionHandler::handleBaseException($e, $request);
+            }
+
+            foreach (\App\Exceptions\ApiExceptionHandler::$handlers as $exceptionClass => $handlerMethod) {
+                if ($e instanceof $exceptionClass) {
+                    return \App\Exceptions\ApiExceptionHandler::$handlerMethod($e, $request);
+                }
+            }
+
+            return \App\Exceptions\ApiExceptionHandler::handleThrowable($e, $request);
+        });
     })->create();
