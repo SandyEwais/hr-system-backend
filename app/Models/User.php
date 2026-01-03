@@ -27,7 +27,6 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
-        'pin_hash',
         'voice_biometric_id',
         'face_biometric_id',
         'fingerprint_biometric_id',
