@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Employee\AuthContoller;
 
 Route::prefix('v1')->group(function () {
 
@@ -10,10 +11,10 @@ Route::prefix('v1')->group(function () {
     |--------------------------------------------------------------------------
     */
     Route::prefix('auth')
-        // ->controller(AuthContoller::class)
+        ->controller(AuthContoller::class)
         ->group(function () {
-            // Route::post('login', 'login');
-            // Route::post('signup', 'signup');
+            Route::post('/login', 'login');
+            Route::post('/signup/{step}', 'register');
         });
 
     /*

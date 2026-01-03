@@ -70,6 +70,7 @@ class ApiExceptionHandler
         return self::errorResponse(
             'Authentication required.',
             401,
+            [$e->getMessage()],
             code: 'AUTH_REQUIRED'
         );
     }
@@ -79,6 +80,7 @@ class ApiExceptionHandler
         return self::errorResponse(
             'You do not have permission.',
             403,
+            [$e->getMessage()],
             code: 'FORBIDDEN'
         );
     }
@@ -105,6 +107,7 @@ class ApiExceptionHandler
         return self::errorResponse(
             'Resource not found',
             404,
+            [$e->getMessage()],
             code: 'NOT_FOUND'
         );
     }
@@ -124,6 +127,7 @@ class ApiExceptionHandler
         return self::errorResponse(
             'Database error occurred',
             500,
+            [$e->getMessage()],
             code: 'DATABASE_ERROR'
         );
     }
@@ -133,7 +137,7 @@ class ApiExceptionHandler
         return self::errorResponse(
             $e->getMessage() ?: 'HTTP error',
             $e->getStatusCode(),
-            code: $e->getStatusCode()
+            code: 'HTTP_ERROR_'.$e->getStatusCode()
         );
     }
 }
