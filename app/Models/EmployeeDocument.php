@@ -16,5 +16,9 @@ class EmployeeDocument extends Model
         'name',
         'path',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

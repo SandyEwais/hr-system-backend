@@ -21,5 +21,24 @@ class AttendanceMovement extends Model
         'time',
         'movement_type',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 
 }

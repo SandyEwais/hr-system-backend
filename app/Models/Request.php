@@ -19,5 +19,49 @@ class Request extends Model
         'status',
         'current_action_taker_id',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function currentActionTaker()
+    {
+        return $this->belongsTo(User::class, 'current_action_taker_id');
+    }
+
+    public function attachments()
+    {
+        return $this->hasMany(RequestAttachment::class);
+    }
+
+    public function leaveRequest()
+    {
+        return $this->hasOne(LeaveRequest::class);
+    }
+
+    public function leaveResumption()
+    {
+        return $this->hasOne(LeaveResumption::class);
+    }
+
+    public function clearanceRequest()
+    {
+        return $this->hasOne(ClearanceRequest::class);
+    }
+
+    public function expenseClaimRequest()
+    {
+        return $this->hasOne(ExpenseClaimRequest::class);
+    }
+
+    public function missingPunchRequest()
+    {
+        return $this->hasOne(MissingPunchRequest::class);
+    }
+
+    public function excuseRequest()
+    {
+        return $this->hasOne(ExcuseRequest::class);
+    }
 
 }

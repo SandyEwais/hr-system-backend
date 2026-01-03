@@ -20,5 +20,9 @@ class MissingPunchRequest extends Model
         'reason',
         'comment',
     ];
+    public function request()
+    {
+        return $this->belongsTo(Request::class);
+    }
 
 }

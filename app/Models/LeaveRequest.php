@@ -20,5 +20,9 @@ class LeaveRequest extends Model
         'duration_days',
         'comment',
     ];
+    public function request()
+    {
+        return $this->belongsTo(Request::class);
+    }
 
 }

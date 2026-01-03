@@ -19,7 +19,6 @@ return new class extends Migration
             $table->timestamp('phone_verified_at')->nullable();
             $table->string('password');
             $table->string('phone')->nullable();
-            $table->string('pin_hash')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

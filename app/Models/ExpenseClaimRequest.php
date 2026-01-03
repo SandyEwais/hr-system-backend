@@ -13,4 +13,13 @@ class ExpenseClaimRequest extends Model
         'comment',
     ];
 
+    public function request()
+    {
+        return $this->belongsTo(Request::class);
+    }
+
+    public function items()
+    {
+        return $this->hasMany(ExpenseClaimItem::class);
+    }
 }

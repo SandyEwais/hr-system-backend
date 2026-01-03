@@ -20,5 +20,9 @@ class EmployeeFinancialDetail extends Model
         'contract_period',
         'contract_status',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

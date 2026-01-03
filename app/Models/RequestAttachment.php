@@ -12,5 +12,9 @@ class RequestAttachment extends Model
         'path',
         'type',
     ];
+    public function request()
+    {
+        return $this->belongsTo(Request::class);
+    }
 
 }

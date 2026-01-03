@@ -14,5 +14,19 @@ class Project extends Model
         'name',
         'status',
     ];
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
+
+    public function jobDetails()
+    {
+        return $this->hasMany(EmployeeJobDetail::class);
+    }
+
+    public function attendanceMovements()
+    {
+        return $this->hasMany(AttendanceMovement::class);
+    }
 
 }

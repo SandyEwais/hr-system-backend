@@ -10,5 +10,14 @@ class Position extends Model
         'title',
         'department_id',
     ];
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function jobDetails()
+    {
+        return $this->hasMany(EmployeeJobDetail::class);
+    }
 
 }

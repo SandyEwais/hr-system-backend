@@ -13,4 +13,18 @@ class Location extends Model
         'longitude',
     ];
 
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+    public function jobDetails()
+    {
+        return $this->hasMany(EmployeeJobDetail::class);
+    }
+
+    public function attendanceMovements()
+    {
+        return $this->hasMany(AttendanceMovement::class);
+    }
 }

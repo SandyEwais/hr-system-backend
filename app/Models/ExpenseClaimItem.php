@@ -11,5 +11,9 @@ class ExpenseClaimItem extends Model
         'description',
         'amount',
     ];
+    public function expenseClaimRequest()
+    {
+        return $this->belongsTo(ExpenseClaimRequest::class);
+    }
 
 }
